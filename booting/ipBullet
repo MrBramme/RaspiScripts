@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# A small bash script to send the local ip of my pi to my phone using pushbullet.
+# Be sure to verify to grep statement
+
+INETINTERFACE="wlan0"
+ACCESS_TOKEN="<INSERT TOKEN HERE>"
+
+sleep 5
+while ! ping -c 1 google.com >> /dev/null 2>&1;
+do
+echo "Offline, checking again in a minute"
+sleep 10
+done
+
+echo "Online, sending message!"
+ipVar=$(/sbin/ifconfig $INETINTERFACE | grep 'inet ' | cut -d: -f2 | awk '{ print $2}')
+
+curl https://api.pushbullet.com/v2/pushes \
+-u $ACCESS_TOKEN: \
+-d type="note" \
+-d title="CamPi IP adress" \
+-d body=$ipVar \
+-X POST  >> /dev/null 2>&1
