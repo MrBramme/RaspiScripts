@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 ## Publishes a single mqtt message
+# This can be done pure command line as well but this is a controlled python approach
 # example: python <PATH TO SCRIPT>/mqttSinglePublish.py -h <host> -u <user> -P <password> -t <topic> -m "I'm your content"
 
 import sys
