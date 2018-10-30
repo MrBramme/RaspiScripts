@@ -1,0 +1,5 @@
+To add a safe shutdown button. add the following to /etc/boot.txt with the correct gpio pin
+
+dtoverlay=gpio-shutdown,gpio_pin=12
+
+source: https://raspberrypi.stackexchange.com/questions/77905/raspberry-pi-3-model-b-dtoverlay-gpio-shutdown
